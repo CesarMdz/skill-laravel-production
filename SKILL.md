@@ -30,6 +30,7 @@ When invoked, the AI must:
 See /modules directory for detailed breakdown.
 
 ## Start here
+
 - modules/00-overview.md
 - modules/03-database.md (highest impact)
 - modules/06-deploy.md

@@ -8,6 +8,7 @@ Designed for humans **and** AI agents to ship changes safely with scalable archi
 ![CI](https://github.com/CesarMdz/skill-laravel-production/actions/workflows/markdown-lint.yml/badge.svg)
 
 ## What this is
+
 A structured “production readiness” skill that evaluates:
 
 - Architecture quality (thin controllers, actions/services, domain boundaries)
@@ -19,18 +20,22 @@ A structured “production readiness” skill that evaluates:
 - Git discipline (commits/PRs/releases)
 
 ## Compatible with
+
 - Claude Skills (`SKILL.md`)
 - ChatGPT / OpenAI Agents
 - Copilot Agents
 - Any LLM-based dev assistant
 
 ## How to use (human)
+
 Use this as a pre-PR/pre-deploy gate:
+
 1. Pick the relevant module(s) in `/modules`
 2. Run the checks
 3. Document results in PR + deploy notes
 
 ## How to use (AI)
+
 Copy this prompt into your AI assistant:
 
 > You are my Laravel Production Readiness auditor. Apply the modules in this repository to review my change.  
@@ -39,6 +44,7 @@ Copy this prompt into your AI assistant:
 More examples: `modules/08-ai-usage.md`.
 
 ## Modules
+
 - `modules/00-overview.md`
 - `modules/01-architecture.md`
 - `modules/02-security.md`
@@ -50,10 +56,13 @@ More examples: `modules/08-ai-usage.md`.
 - `modules/08-ai-usage.md`
 
 ## Versioning
+
 We use **Semantic Versioning** (`MAJOR.MINOR.PATCH`). See `CHANGELOG.md`.
 
 ## Contributing
+
 See `CONTRIBUTING.md`. Security issues: see `SECURITY.md`.
 
 ## License
+
 MIT — see `LICENSE`.
