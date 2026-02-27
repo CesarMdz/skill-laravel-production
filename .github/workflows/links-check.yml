@@ -1,0 +1,11 @@
+name: Links Check
+on: [push, pull_request]
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links in markdown
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress "**/*.md" --exclude-mail
