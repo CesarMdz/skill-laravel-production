@@ -6,6 +6,7 @@ Designed for humans **and** AI agents to ship changes safely with scalable archi
 ![Laravel](https://img.shields.io/badge/Laravel-latest%20stable-red)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![CI](https://github.com/CesarMdz/skill-laravel-production/actions/workflows/markdown-lint.yml/badge.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
 
 ## What this is
 
