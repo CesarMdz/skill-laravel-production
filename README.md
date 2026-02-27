@@ -35,6 +35,40 @@ Use this as a pre-PR/pre-deploy gate:
 2. Run the checks
 3. Document results in PR + deploy notes
 
+## Install (add this skill to your project)
+
+You can use this repository in any Laravel project in three ways.  
+Recommended path inside your project: `.ai/skills/laravel-production-readiness/`
+
+### Option A — Copy/Paste (fastest, simplest)
+1) Download this repository as ZIP (or clone it temporarily).
+2) Copy these folders/files into your project:
+
+- `SKILL.md`
+- `modules/`
+- (optional) `.github/` templates/workflows if you want them too
+
+Example destination:
+
+- your-laravel-project/
+- .ai/
+- skills/
+- laravel-production-readiness/
+- SKILL.md
+- modules/
+
+This option is best if you just want a stable snapshot and don’t care about updates.
+
+### Option B — Git Submodule (best for keeping it updated)
+From your Laravel project root:
+
+```bash
+mkdir -p .ai/skills
+git submodule add https://github.com/CesarMdz/skill-laravel-production.git .ai/skills/laravel-production-readiness
+git commit -m "chore: add laravel production readiness skill (submodule)"
+
+---
+
 ## How to use (AI)
 
 Copy this prompt into your AI assistant:
