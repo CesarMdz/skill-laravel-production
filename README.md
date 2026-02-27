@@ -1,103 +1,192 @@
 # Laravel Production Readiness Skill
 
-AI-ready, production-grade checklist and guidance for modern Laravel applications.
-Designed for humans **and** AI agents to ship changes safely with scalable architecture.
+> **AI-ready, production-grade readiness framework for modern Laravel applications.**  
+> Designed for humans **and** AI agents to ship safely, scale intentionally, and break nothing.
 
-![Laravel](https://img.shields.io/badge/Laravel-latest%20stable-red)
-![License](https://img.shields.io/badge/License-MIT-green)
-![CI](https://github.com/CesarMdz/skill-laravel-production/actions/workflows/markdown-lint.yml/badge.svg)
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
+<p align="left">
+  <img alt="Laravel" src="https://img.shields.io/badge/laravel-latest%20stable-red" />
+  <img alt="License" src="https://img.shields.io/badge/license-mit-green" />
+  <img alt="CI" src="https://github.com/CesarMdz/skill-laravel-production/actions/workflows/markdown-lint.yml/badge.svg" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue" />
+</p>
 
-## What this is
+---
 
-A structured “production readiness” skill that evaluates:
+## Why this exists
 
-- Architecture quality (thin controllers, actions/services, domain boundaries)
-- Security posture (config/env, rate limits, auth patterns)
-- Database safety (safe migrations, indexes, N+1 prevention)
-- Performance (cache, queues, config caching)
-- Quality gates (tests, formatting, static analysis)
-- Deployment safety (zero-downtime mindset, post-deploy checks)
-- Git discipline (commits/PRs/releases)
+Most Laravel production incidents are not caused by syntax errors — they come from:
 
-## Compatible with
+- Unsafe database migrations
+- Weak architectural boundaries (fat controllers, mixed responsibilities)
+- Missing deployment discipline and post-deploy checks
+- Silent performance regressions (N+1, missing indexes, caching gaps)
+- Inconsistent Git and PR hygiene
 
-- Claude Skills (`SKILL.md`)
-- ChatGPT / OpenAI Agents
-- Copilot Agents
-- Any LLM-based dev assistant
+This repository provides a **repeatable production readiness gate** to prevent those failures.
 
-## How to use (human)
+---
 
-Use this as a pre-PR/pre-deploy gate:
+## What this evaluates
 
-1. Pick the relevant module(s) in `/modules`
-2. Run the checks
-3. Document results in PR + deploy notes
+- **Architecture**: thin controllers, Actions/Services, Requests, Policies
+- **Security**: environment/config discipline, rate limits, safe defaults
+- **Database safety**: safe migrations, indexing strategy, N+1 prevention
+- **Performance**: caching, queues, config/route/view caching
+- **Quality gates**: tests, formatting, static analysis
+- **Deploy safety**: zero-downtime mindset, rollback planning
+- **Git discipline**: clean commits, structured PRs, semantic releases
 
-## Install (add this skill to your project)
+---
 
-You can use this repository in any Laravel project in three ways.  
-Recommended path inside your project: `.ai/skills/laravel-production-readiness/`
+## Who is this for?
 
-### Option A — Copy/Paste (fastest, simplest)
-1) Download this repository as ZIP (or clone it temporarily).
-2) Copy these folders/files into your project:
+- Laravel developers shipping to staging/production
+- Tech leads enforcing consistent quality
+- SaaS teams
+- AI-assisted development workflows
 
-- `SKILL.md`
-- `modules/`
-- (optional) `.github/` templates/workflows if you want them too
+---
 
-Example destination:
+# Installation
 
-- your-laravel-project/
-- .ai/
-- skills/
-- laravel-production-readiness/
-- SKILL.md
-- modules/
+Recommended location inside your project:
 
-This option is best if you just want a stable snapshot and don’t care about updates.
+.ai/skills/laravel-production-readiness/
 
-### Option B — Git Submodule (best for keeping it updated)
+---
+
+## Option A — Copy (Fastest)
+
+1. Download this repository.
+2. Copy into your Laravel project:
+
+your-laravel-project/
+.ai/
+skills/
+laravel-production-readiness/
+SKILL.md
+modules/
+
+Best for teams who want a stable snapshot.
+
+---
+
+## Option B — Git Submodule
+
 From your Laravel project root:
 
 ```bash
 mkdir -p .ai/skills
 git submodule add https://github.com/CesarMdz/skill-laravel-production.git .ai/skills/laravel-production-readiness
 git commit -m "chore: add laravel production readiness skill (submodule)"
+```
+
+Update later:
+
+```bash
+git submodule update --remote --merge
+git commit -m "chore: update laravel production readiness skill"
+```
 
 ---
 
-## How to use (AI)
+## Option C — Git Subtree (Recommended)
 
-Copy this prompt into your AI assistant:
+```bash
+mkdir -p .ai/skills
+git subtree add --prefix=.ai/skills/laravel-production-readiness https://github.com/CesarMdz/skill-laravel-production.git main --squash
+git commit -m "chore: vendor laravel production readiness skill (subtree)"
+```
 
-> You are my Laravel Production Readiness auditor. Apply the modules in this repository to review my change.  
-> Output: (1) risks, (2) checklist with commands, (3) safe migration strategy if DB changes, (4) PR description, (5) deploy notes, (6) recommended commit message(s).
+Update later:
 
-More examples: `modules/08-ai-usage.md`.
+```bash
+git subtree pull --prefix=.ai/skills/laravel-production-readiness https://github.com/CesarMdz/skill-laravel-production.git main --squash
+git commit -m "chore: update laravel production readiness skill"
+```
 
-## Modules
+---
 
-- `modules/00-overview.md`
-- `modules/01-architecture.md`
-- `modules/02-security.md`
-- `modules/03-database.md`
-- `modules/04-performance.md`
-- `modules/05-quality.md`
-- `modules/06-deploy.md`
-- `modules/07-git.md`
-- `modules/08-ai-usage.md`
+# Usage
 
-## Versioning
+## Human Workflow (Pre-PR / Pre-Deploy)
 
-We use **Semantic Versioning** (`MAJOR.MINOR.PATCH`). See `CHANGELOG.md`.
+1. Review `modules/00-overview.md`
+2. If database changed → apply `modules/03-database.md`
+3. Before deploy → apply `modules/06-deploy.md`
+4. Before pushing → apply `modules/07-git.md`
+5. Document results in your PR
 
-## Contributing
+---
 
-See `CONTRIBUTING.md`. Security issues: see `SECURITY.md`.
+## AI Workflow
 
-## License
+Copy into your AI assistant:
 
-MIT — see `LICENSE`.
+> Apply the Laravel Production Readiness Skill located at `.ai/skills/laravel-production-readiness/`.  
+> Output:
+>
+> 1. Risks (high/medium/low)
+> 2. Checklist with commands
+> 3. Safe migration strategy (if DB changes)
+> 4. PR description
+> 5. Deploy notes
+> 6. Suggested commit messages
+
+More examples: `modules/08-ai-usage.md`
+
+---
+
+## Example Output
+
+### Risks
+
+- **HIGH**: Migration drops a column on a large table (locking risk)
+- **MEDIUM**: Missing index on frequently filtered foreign key
+- **LOW**: Business logic inside controller
+
+### Safe Migration Strategy
+
+1. Add nullable column
+2. Backfill in batches
+3. Add index
+4. Switch application logic
+5. Remove old column in later deploy
+
+### Suggested Commit
+
+fix(payments): handle gateway timeout with safe retry logic
+
+---
+
+# Modules
+
+- modules/00-overview.md
+- modules/01-architecture.md
+- modules/02-security.md
+- modules/03-database.md
+- modules/04-performance.md
+- modules/05-quality.md
+- modules/06-deploy.md
+- modules/07-git.md
+- modules/08-ai-usage.md
+
+---
+
+# Versioning
+
+Semantic Versioning (MAJOR.MINOR.PATCH).  
+See CHANGELOG.md.
+
+---
+
+# Contributing
+
+See CONTRIBUTING.md.  
+Security issues → SECURITY.md.
+
+---
+
+# License
+
+MIT — see LICENSE.
