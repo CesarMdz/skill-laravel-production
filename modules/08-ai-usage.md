@@ -1,32 +1,17 @@
-# AI Usage Guide
+# AI Usage (Copy/Paste)
 
-This module helps AI agents produce consistent, high-signal outputs.
+## Prompt (repo audit)
+You are a senior Laravel architect + release engineer.
+Audit my changes using this repository modules.
 
-## Invocation prompt (generic)
-You are a senior Laravel architect and release engineer.
-Audit my changes using this repository’s modules.
+Return:
+1) Risks (high/medium/low) with reasons
+2) Checklist with commands
+3) Safe migration plan (if DB changes)
+4) PR description (summary + testing + env vars + deploy notes)
+5) Suggested commit message(s) using Conventional Commits
 
-Output must include:
-1) Risk report (High/Med/Low) with concrete reasons
-2) Checklist with commands (Laravel + frontend if relevant)
-3) Database migration risk plan (safe-migration steps)
-4) Architecture recommendations (actions/services/policies/requests)
-5) PR description (summary + testing steps + env vars + deploy notes)
-6) Suggested commit message(s) following Conventional Commits
-
-## If DB changes exist
-- Require: migrate strategy (add nullable → backfill → constraint/index)
-- Require: rollback plan
-- Require: estimate of table size impact (if unknown, mention as assumption)
-
-## If queues/jobs exist
-- Require: idempotency notes
-- Require: retry/failure strategy
-- Require: Horizon/supervisor notes if relevant
-
-## Minimal output example
-- Risks:
-- Checklist:
-- PR template:
-- Deploy notes:
-- Commit messages:
+Constraints:
+- Prefer minimal, production-safe changes
+- Assume latest stable Laravel
+- If uncertainty exists, state assumptions explicitly
